@@ -2,13 +2,17 @@ package com.enigma.dao;
 
 import com.enigma.constanta.MessageConstant;
 import com.enigma.model.Boat;
+import com.enigma.model.StatusContainer;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class PierMapImplementations implements PierMap {
-    private Map<Integer, Boat>pierSlots = new HashMap<Integer, Boat>();
+    private Map<Integer, StatusContainer>pierSlots = new HashMap<Integer, StatusContainer>();
     private Integer capacity;
+    public static final String DOCKED = "Docked";
+    public static final String RESERVE = "Reserved";
 
     public PierMapImplementations(Integer capacity) {
         this.capacity = capacity;
@@ -22,9 +26,9 @@ public class PierMapImplementations implements PierMap {
         return String.format(MessageConstant.CREATED_PIER_SLOT,this.capacity);
     }
     public String dock(Boat boat){
-        for (Map.Entry<Integer, Boat> slots :this.pierSlots.entrySet()) {
+        for (Map.Entry<Integer, StatusContainer> slots :this.pierSlots.entrySet()) {
             if (slots.getValue()== null){
-                slots.setValue(boat);
+                slots.setValue(new StatusContainer(DOCKED,boat));
                 return String.format(MessageConstant.SUCCESS_DOCKING,slots.getKey());
             }
         }
