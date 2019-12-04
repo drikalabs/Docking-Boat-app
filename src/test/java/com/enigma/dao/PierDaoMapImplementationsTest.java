@@ -88,4 +88,13 @@ public class PierDaoMapImplementationsTest {
         pierDao.dock(new Boat(boatCode2));
         assertEquals(MessageConstant.FAIL_RESERVE, pierDao.reserve(new Boat(boatCode1)));
     }
+    @Test
+    public void should_be_able_to_dock_a_boat_after_reserve(){
+        Integer givenCapacity=1;
+        Integer  expectedPierNumber=1;
+        PierDao pierDao = new PierDaoMapImplementations(givenCapacity);
+        pierDao.create();
+        pierDao.reserve(new Boat(boatCode2));
+        assertEquals(String.format(MessageConstant.SUCCESS_DOCKING,expectedPierNumber), pierDao.dock(new Boat(boatCode2)));
+    }
 }

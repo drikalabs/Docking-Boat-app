@@ -30,6 +30,9 @@ public class PierDaoMapImplementations implements PierDao {
             if (slot.getValue()== null){
                 slot.setValue(new StatusContainer(DOCKED,boat));
                 return String.format(MessageConstant.SUCCESS_DOCKING,slot.getKey());
+            }else if (slot.getValue().getBoat().equals(boat)){
+                slot.setValue(new StatusContainer(DOCKED,boat));
+                return String.format(MessageConstant.SUCCESS_DOCKING,slot.getKey());
             }
         }
         return MessageConstant.FAIL_DOCKING;
