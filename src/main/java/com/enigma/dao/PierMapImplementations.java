@@ -5,7 +5,6 @@ import com.enigma.model.Boat;
 import com.enigma.model.StatusContainer;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class PierMapImplementations implements PierMap {
@@ -26,12 +25,13 @@ public class PierMapImplementations implements PierMap {
         return String.format(MessageConstant.CREATED_PIER_SLOT,this.capacity);
     }
     public String dock(Boat boat){
-        for (Map.Entry<Integer, StatusContainer> slots :this.pierSlots.entrySet()) {
-            if (slots.getValue()== null){
-                slots.setValue(new StatusContainer(DOCKED,boat));
-                return String.format(MessageConstant.SUCCESS_DOCKING,slots.getKey());
+        for (Map.Entry<Integer, StatusContainer> slot :this.pierSlots.entrySet()) {
+            if (slot.getValue()== null){
+                slot.setValue(new StatusContainer(DOCKED,boat));
+                return String.format(MessageConstant.SUCCESS_DOCKING,slot.getKey());
             }
         }
         return MessageConstant.FAIL_DOCKING;
     }
+
 }
