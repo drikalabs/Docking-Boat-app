@@ -2,8 +2,9 @@ package com.enigma.dao;
 
 import com.enigma.model.Boat;
 
-public interface PierMap {
+public interface PierDao {
     String create();
     String dock(Boat boat);
     String leave(Integer pierNumber);
+    String status();
 }

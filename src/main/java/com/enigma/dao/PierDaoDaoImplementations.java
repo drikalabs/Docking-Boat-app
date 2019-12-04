@@ -7,16 +7,16 @@ import com.enigma.model.StatusContainer;
 import java.util.HashMap;
 import java.util.Map;
 
-public class PierMapImplementations implements PierMap {
+public class PierDaoDaoImplementations implements PierDao {
     private Map<Integer, StatusContainer>pierSlots = new HashMap<Integer, StatusContainer>();
     private Integer capacity;
-    public static final String DOCKED = "Docked";
-    public static final String RESERVE = "Reserved";
+    private static final String DOCKED = "Docked";
+    private static final String RESERVE = "Reserved";
 
-    public PierMapImplementations(Integer capacity) {
+    public PierDaoDaoImplementations(Integer capacity) {
         this.capacity = capacity;
     }
-
+    @Override
     public String create(){
         if (this.capacity == 0)return String.format(MessageConstant.FAILED_CREATED_PIER_SLOT,this.capacity);
         for (int i = 1; i <= this.capacity ; i++) {
@@ -24,6 +24,7 @@ public class PierMapImplementations implements PierMap {
         }
         return String.format(MessageConstant.CREATED_PIER_SLOT,this.capacity);
     }
+    @Override
     public String dock(Boat boat){
         for (Map.Entry<Integer, StatusContainer> slot :this.pierSlots.entrySet()) {
             if (slot.getValue()== null){
@@ -33,6 +34,7 @@ public class PierMapImplementations implements PierMap {
         }
         return MessageConstant.FAIL_DOCKING;
     }
+    @Override
     public String leave(Integer pierNumber){
         for (Map.Entry<Integer,StatusContainer>slot:this.pierSlots.entrySet()) {
             if (slot.getValue()!=null){
@@ -43,5 +45,14 @@ public class PierMapImplementations implements PierMap {
             }
         }
         return String.format(MessageConstant.BOAT_NOT_FOUND,pierNumber);
+    }
+    @Override
+    public String status(){
+        StringBuilder stringStatus =new StringBuilder();
+        stringStatus.append(MessageConstant.STATUS_HEADER);
+        for (Map.Entry<Integer,StatusContainer>slot:this.pierSlots.entrySet()) {
+            stringStatus.append(String.format(MessageConstant.STATUS_BODY,slot.getKey(),slot.getValue().getBoat().getBoatCode(),slot.getValue().getStatusDock()));
+        }
+        return stringStatus.toString();
     }
 }
