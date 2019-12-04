@@ -1,5 +1,5 @@
 ## Project Title
-#Docking-Boat-App
+# Docking-Boat-App
 
 
 REQUIREMENTS
@@ -15,7 +15,7 @@ You should already install supporting software like:
  -------------
 after you clone the data from git , you have to do it
  * Extract file 
- * You should put the file in the "command-file" directory
+ * You should put the file in the "commands-file" directory
  * Go to main directory app and type the command:
  
 ```
