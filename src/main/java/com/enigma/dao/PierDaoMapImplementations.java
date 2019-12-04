@@ -7,13 +7,13 @@ import com.enigma.model.StatusContainer;
 import java.util.HashMap;
 import java.util.Map;
 
-public class PierDaoDaoImplementations implements PierDao {
+public class PierDaoMapImplementations implements PierDao {
     private Map<Integer, StatusContainer>pierSlots = new HashMap<Integer, StatusContainer>();
     private Integer capacity;
     private static final String DOCKED = "Docked";
     private static final String RESERVE = "Reserved";
 
-    public PierDaoDaoImplementations(Integer capacity) {
+    public PierDaoMapImplementations(Integer capacity) {
         this.capacity = capacity;
     }
     @Override
@@ -55,5 +55,14 @@ public class PierDaoDaoImplementations implements PierDao {
         }
         return stringStatus.toString();
     }
-
+    @Override
+    public String reserve(Boat boat){
+        for (Map.Entry<Integer, StatusContainer> slot :this.pierSlots.entrySet()) {
+            if (slot.getValue()== null){
+                slot.setValue(new StatusContainer(RESERVE,boat));
+                return String.format(MessageConstant.SUCCESS_RESERVE,slot.getKey());
+            }
+        }
+        return MessageConstant.FAIL_RESERVE;
+    }
 }

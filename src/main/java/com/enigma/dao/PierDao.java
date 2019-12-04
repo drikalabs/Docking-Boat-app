@@ -7,4 +7,5 @@ public interface PierDao {
     String dock(Boat boat);
     String leave(Integer pierNumber);
     String status();
+    String reserve(Boat boat);
 }
