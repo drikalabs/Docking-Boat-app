@@ -33,5 +33,15 @@ public class PierMapImplementations implements PierMap {
         }
         return MessageConstant.FAIL_DOCKING;
     }
-
+    public String leave(Integer pierNumber){
+        for (Map.Entry<Integer,StatusContainer>slot:this.pierSlots.entrySet()) {
+            if (slot.getValue()!=null){
+                if (slot.getKey().equals(pierNumber)){
+                    slot.setValue(null);
+                    return String.format(MessageConstant.SUCCESS_LEAVE,slot.getKey());
+                }
+            }
+        }
+        return String.format(MessageConstant.BOAT_NOT_FOUND,pierNumber);
+    }
 }

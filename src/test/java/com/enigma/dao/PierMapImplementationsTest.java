@@ -40,4 +40,21 @@ public class PierMapImplementationsTest {
         pierMap.dock(new Boat(boatCode2));
         assertEquals(MessageConstant.FAIL_DOCKING,pierMap.dock(new Boat(boatCode1)));
     }
+    @Test
+    public void leave_should_be_able_leave_a_boat(){
+        Integer givenCapacity=1;
+        Integer expectedPierNumber=1;
+        PierMap pierMap = new PierMapImplementations(givenCapacity);
+        pierMap.create();
+        pierMap.dock(new Boat(boatCode1));
+        assertEquals(String.format(MessageConstant.SUCCESS_LEAVE,expectedPierNumber),pierMap.leave(expectedPierNumber));
+    }
+    @Test
+    public void leave_should_not_be_able_leave_a_boat_when_pier_still_free(){
+        Integer givenCapacity=1;
+        Integer expectedPierNumber=1;
+        PierMap pierMap = new PierMapImplementations(givenCapacity);
+        pierMap.create();
+        assertEquals(String.format(MessageConstant.BOAT_NOT_FOUND,expectedPierNumber),pierMap.leave(expectedPierNumber));
+    }
 }
