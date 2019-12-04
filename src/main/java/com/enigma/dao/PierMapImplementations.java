@@ -21,4 +21,13 @@ public class PierMapImplementations implements PierMap {
         }
         return String.format(MessageConstant.CREATED_PIER_SLOT,this.capacity);
     }
+    public String dock(Boat boat){
+        for (Map.Entry<Integer, Boat> slots :this.pierSlots.entrySet()) {
+            if (slots.getValue()== null){
+                slots.setValue(boat);
+                return String.format(MessageConstant.SUCCESS_DOCKING,slots.getKey());
+            }
+        }
+        return MessageConstant.FAIL_DOCKING;
+    }
 }
