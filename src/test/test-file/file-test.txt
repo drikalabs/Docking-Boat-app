@@ -1,0 +1,9 @@
+create_boating_dock 6
+dock KA-01-HH-1234
+dock KA-01-HH-9999
+dock KA-01-BB-0001
+leave 4
+reserve KA-09-HH-7788
+reserve KA-09-HH-0123
+dock KA-09-HH-0987
+status

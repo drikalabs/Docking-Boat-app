@@ -12,16 +12,7 @@ public class StatusContainer {
     public String getStatusDock() {
         return statusDock;
     }
-
-    public void setStatusDock(String statusDock) {
-        this.statusDock = statusDock;
-    }
-
     public Boat getBoat() {
         return boat;
-    }
-
-    public void setBoat(Boat boat) {
-        this.boat = boat;
     }
 }

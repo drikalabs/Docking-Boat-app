@@ -7,17 +7,26 @@ import java.util.List;
 
 public class FileProcessorImplementation implements FileProcessor{
     private String pathFile;
+    private List<String>fileTexts= new ArrayList<String>();
 
     public FileProcessorImplementation(String pathFile) {
         this.pathFile = pathFile;
     }
     public List<String>readFile(){
-        List<String>fileTexts= new ArrayList<String>();
     try {
         BufferedReader reader = new BufferedReader(new FileReader(this.pathFile));
+        boolean readingFile =true;
+         while (readingFile){
+           String text = reader.readLine();
+           if (text != null){
+               fileTexts.add(text);
+           }else {
+               readingFile=false;
+           }
+       }
     } catch (Exception e) {
         e.printStackTrace();
     }
-    return fileTexts;
+    return this.fileTexts;
     }
 }

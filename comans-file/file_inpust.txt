@@ -1,0 +1,20 @@
+create_boating_dock 6
+dock KA-01-HH-1234
+dock KA-01-HH-9999
+dock KA-01-BB-0001
+dock KA-01-HH-7777
+dock KA-01-HH-2701
+dock KA-01-HH-3141
+leave 4
+status
+dock KA-01-P-333
+dock DL-12-AA-9999
+leave 1
+leave 5
+leave 6
+reserve KA-09-HH-7788
+reserve KA-09-HH-0123
+dock KA-09-HH-0987
+dock CA-09-IO-1111
+dock KA-09-HH-0123
+status
