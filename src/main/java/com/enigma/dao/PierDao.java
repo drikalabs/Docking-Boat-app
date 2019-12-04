@@ -8,4 +8,5 @@ public interface PierDao {
     String leave(Integer pierNumber);
     String status();
     String reserve(Boat boat);
+    Integer setCapacity(Integer capacity);
 }

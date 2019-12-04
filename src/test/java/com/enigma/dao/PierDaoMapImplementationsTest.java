@@ -97,4 +97,10 @@ public class PierDaoMapImplementationsTest {
         pierDao.reserve(new Boat(boatCode2));
         assertEquals(String.format(MessageConstant.SUCCESS_DOCKING,expectedPierNumber), pierDao.dock(new Boat(boatCode2)));
     }
+    @Test
+    public void setCapacity_should_be_able_to_return_capacity(){
+        Integer givenCapacity=1;
+        PierDao pierDao= new PierDaoMapImplementations();
+        assertEquals(givenCapacity,pierDao.setCapacity(givenCapacity));
+    }
 }

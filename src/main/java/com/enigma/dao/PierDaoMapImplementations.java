@@ -16,6 +16,10 @@ public class PierDaoMapImplementations implements PierDao {
     public PierDaoMapImplementations(Integer capacity) {
         this.capacity = capacity;
     }
+
+    public PierDaoMapImplementations() {
+    }
+
     @Override
     public String create(){
         if (this.capacity == 0)return String.format(MessageConstant.FAILED_CREATED_PIER_SLOT,this.capacity);
@@ -54,6 +58,7 @@ public class PierDaoMapImplementations implements PierDao {
         StringBuilder stringStatus =new StringBuilder();
         stringStatus.append(MessageConstant.STATUS_HEADER);
         for (Map.Entry<Integer,StatusContainer>slot:this.pierSlots.entrySet()) {
+            if (slot.getValue()== null)continue;
             stringStatus.append(String.format(MessageConstant.STATUS_BODY,slot.getKey(),slot.getValue().getBoat().getBoatCode(),slot.getValue().getStatusDock()));
         }
         return stringStatus.toString();
@@ -67,5 +72,9 @@ public class PierDaoMapImplementations implements PierDao {
             }
         }
         return MessageConstant.FAIL_RESERVE;
+    }
+
+    public Integer setCapacity(Integer capacity) {
+        return this.capacity = capacity;
     }
 }
